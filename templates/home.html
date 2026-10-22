@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Bienvenido, {{ user.username }}</h1>
-<p>Aquí aparecerán tus tickets de soporte.</p>
+<p>Reporta un problema o revisa el estado de tus solicitudes.</p>
+<a href="{% url 'tickets:lista' %}" class="btn btn-primary">Ver mis tickets</a>
 {% endblock %}

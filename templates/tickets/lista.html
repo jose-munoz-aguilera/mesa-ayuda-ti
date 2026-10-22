@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Mis tickets{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Mis tickets</h2>
+  <a href="{% url 'tickets:crear' %}" class="btn btn-primary">Nuevo ticket</a>
+</div>
+{% if tickets %}
+<table class="table table-striped bg-white">
+  <thead>
+    <tr><th>Título</th><th>Prioridad</th><th>Estado</th><th>Creado</th></tr>
+  </thead>
+  <tbody>
+    {% for t in tickets %}
+    <tr>
+      <td>{{ t.titulo }}</td>
+      <td>{{ t.get_prioridad_display }}</td>
+      <td>{{ t.get_estado_display }}</td>
+      <td>{{ t.creado_en|date:"d/m/Y H:i" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Aún no tienes tickets.</p>
+{% endif %}
+{% endblock %}

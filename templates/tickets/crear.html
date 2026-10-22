@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo ticket{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <h2>Nuevo ticket</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <a href="{% url 'tickets:lista' %}" class="btn btn-link">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
