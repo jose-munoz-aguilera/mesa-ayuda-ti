@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import TicketForm
 from .models import Ticket
@@ -9,6 +9,12 @@ from .models import Ticket
 def lista(request):
     tickets = Ticket.objects.filter(creado_por=request.user)
     return render(request, 'tickets/lista.html', {'tickets': tickets})
+
+
+@login_required
+def detalle(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk, creado_por=request.user)
+    return render(request, 'tickets/detalle.html', {'ticket': ticket})
 
 
 @login_required

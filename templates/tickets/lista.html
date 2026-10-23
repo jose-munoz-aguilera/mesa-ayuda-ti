@@ -13,7 +13,7 @@
   <tbody>
     {% for t in tickets %}
     <tr>
-      <td>{{ t.titulo }}</td>
+      <td><a href="{% url 'tickets:detalle' t.pk %}">{{ t.titulo }}</a></td>
       <td>{{ t.get_prioridad_display }}</td>
       <td>{{ t.get_estado_display }}</td>
       <td>{{ t.creado_en|date:"d/m/Y H:i" }}</td>

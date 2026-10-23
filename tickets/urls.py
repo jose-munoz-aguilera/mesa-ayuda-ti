@@ -6,4 +6,5 @@ app_name = 'tickets'
 urlpatterns = [
     path('', views.lista, name='lista'),
     path('nuevo/', views.crear, name='crear'),
+    path('<int:pk>/', views.detalle, name='detalle'),
 ]
